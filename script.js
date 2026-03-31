@@ -1,5 +1,5 @@
 // 1. Gemini AI Configuration
-const GEMINI_KEY = "AIzaSyB8ldutUVbE8e4xiZ4bp5DwkNMHAsEvsos";
+const GEMINI_KEY = "AIzaSyCNxRTF_fe2ygGboZLrGknOd30a61vTPrQ";
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`;
 
 // 2. Toggle Chat Window
