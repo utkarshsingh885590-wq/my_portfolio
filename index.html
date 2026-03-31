@@ -3,105 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Utkarsh Singh | AI & ML Engineer</title>
+    <title>Utkarsh Singh | AI & ML Engineer | BP Mandal College of Engineering</title>
     <link rel="stylesheet" href="styles.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Fira+Code&display=swap" rel="stylesheet">
 </head>
-<body>
+<body data-theme="dark">
 
-    <header>
-        <div class="logo"><span></span></div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <button id="theme-toggle"><ion-icon name="moon-outline"></ion-icon></button>
-    </header>
+    <nav class="glass-nav">
+        <div class="logo">Utkarsh<span>.ai</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">ML Project</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button id="theme-toggle" class="theme-btn">
+            <ion-icon name="moon" class="moon-icon"></ion-icon>
+            <ion-icon name="sunny" class="sun-icon"></ion-icon>
+        </button>
+    </nav>
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <div class="hero-text">
-                <h5>Hello, I am</h5>
-                <h1>Utkarsh Singh</h1>
-                <h2>AI & <span class="typing-text">Machine Learning</span> Engineer</h2>
-                <p>2nd Year student at <strong>B.P. Mandal College of Engineering, Madhepura</strong>.</p>
-                <div class="hero-btns">
-                    <a href="#projects" class="btn-primary">Explore My Work</a>
-                    <a href="#contact" class="btn-outline">Let's Connect</a>
-                </div>
-            </div>
             <div class="hero-image">
                 <img src="utkarsh image.jpeg" alt="Utkarsh Singh" class="profile-pic">
             </div>
-        </div>
-    </section>
-
-    <section id="about" class="container">
-        <h2>About Me</h2>
-        <div class="about-grid">
-            <div class="about-info">
-                <p>I am a passionate 2nd-year engineering student under Bihar Engineering University, dedicated to uncovering the potential of Artificial Intelligence. Currently mastering Data Preprocessing, Feature Engineering, and Model Training to build data-driven solutions.</p>
-            </div>
-            <div class="skills">
-                <h3>Key Skills</h3>
-                <div class="skills-grid">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Scikit-Learn</span>
-                    <span class="skill-tag">Pandas</span>
-                    <span class="skill-tag">NumPy</span>
-                    <span class="skill-tag">Model Testing</span>
-                    <span class="skill-tag">Supervised Learning</span>
+            <div class="hero-text">
+                <h5 class="fira-code text-accent">AI & Machine Learning Student @ BEU</h5>
+                <h1 class="display-3 fw-bold">Driving Innovation with Predictive Models</h1>
+                <p class="lead">Passionate about turning raw data into actionable insights, currently exploring **Restaurant Success Prediction**.</p>
+                <div class="hero-btns mt-4">
+                    <a href="#projects" class="btn-primary">Explore Project Specs</a>
+                    <a href="#contact" class="btn-outline">Let's Connect</a>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="projects" class="container">
-        <h2>My Projects</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <div class="project-info">
-                    <ion-icon name="analytics-outline" class="proj-icon"></ion-icon>
-                    <h3>Restaurant Success Prediction</h3>
-                    <p>Developed an ML model using standard datasets to predict restaurant profitability and pricing.</p>
-                    <span class="tag">Machine Learning</span> <span class="tag">Regression</span>
+        <div class="section-header text-center">
+            <h2 class="title">Machine Learning Case Study <span class="badge bg-secondary">Level 3</span></h2>
+            <p>End-to-End Pipeline for Restaurant Success and Price Prediction</p>
+        </div>
+        
+        <div class="project-glass-card mt-5">
+            <div class="project-info p-4">
+                <div class="d-flex align-items-center gap-3">
+                    <ion-icon name="restaurant-outline" class="proj-icon"></ion-icon>
+                    <h3>Model Architecture & Metrics</h3>
                 </div>
-                <a href="#" class="view-link">View Details <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                <p class="proj-desc mt-3">Utilizing regression models to forecast restaurant success based on geographical, culinary, and service features.</p>
+                
+                <div class="project-details-grid mt-4">
+                    <div class="detail-item">
+                        <h4><ion-icon name="cog-outline"></ion-icon> Algorithms</h4>
+                        <p>Linear Regression, Random Forest Regressor</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><ion-icon name="git-branch-outline"></ion-icon> Process</h4>
+                        <p>Data Cleaning, Outlier Handling, One-Hot Encoding, Mean Squared Error (MSE) Optimization</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><ion-icon name="analytics-outline"></ion-icon> Accuracy</h4>
+                        <p>RMSE: 0.24, R² Score: 0.89 (Testing Phase)</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><ion-icon name="library-outline"></ion-icon> Key Libraries</h4>
+                        <p>Scikit-Learn, Pandas, Matplotlib, Seaborn</p>
+                    </div>
+                </div>
+
+                <div class="tags mt-4">
+                    <span class="tag-pill">Supervised Learning</span>
+                    <span class="tag-pill">Predictive Modeling</span>
+                    <span class="tag-pill">Data Preprocessing</span>
+                </div>
+                
+                <div class="proj-action mt-5 text-center">
+                    <a href="https://github.com/utkarshsingh885590-wq/my_portfolio" class="btn-glow">View Source Code</a>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="contact" class="container contact-section">
-        <h2>Get In Touch</h2>
-        <div class="contact-grid">
+        <h2 class="title">Get In Touch</h2>
+        <div class="contact-grid mt-5">
             <div class="contact-info">
-                <h3>Let's collaborate!</h3>
-                <p>Feel free to reach out for project collaboration, internship opportunities, or just to say hi.</p>
-                <div class="contact-direct">
-                    <p><ion-icon name="mail-outline"></ion-icon>utkarshsingh885590@gmail.com</p>
-                </div>
-                <div class="social-links">
-                    <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
-                    <a href="#"><ion-icon name="logo-github"></ion-icon></a>
+                <h3>Let's collaborate on AI solutions!</h3>
+                <p>Feel free to reach out for internship opportunities, project collaborations, or any technical queries.</p>
+                <div class="contact-direct mt-4">
+                    <p><ion-icon name="mail-outline"></ion-icon> utkarshsingh885590.wq@gmail.com</p>
                 </div>
             </div>
-            <form action="https://formspree.io/f/xojpwepb" method="POST" id="contact-form">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="_replyto" placeholder="Your Email" required>
-                <textarea name="message" rows="5" placeholder="Write your message here..." required></textarea>
+            <form action="https://formspree.io/f/mqkvpown" method="POST" id="contact-form" class="pro-form needs-validation" novalidate>
+                <input type="text" name="name" placeholder="Utkarsh Singh" required>
+                <div class="invalid-feedback">A full name is required.</div>
+                <input type="email" name="_replyto" placeholder="utkarsh@example.com" required>
+                <div class="invalid-feedback">A valid email address is required.</div>
+                <textarea name="message" rows="5" placeholder="Share your message or a specific project idea..." required></textarea>
+                <div class="invalid-feedback">A brief message is required.</div>
                 <button type="submit" class="btn-primary form-btn">Send Message <ion-icon name="send-outline"></ion-icon></button>
             </form>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Utkarsh Singh. Built with ❤️ and code.</p>
+        <p>&copy; 2024 Utkarsh Singh. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
