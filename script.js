@@ -1,11 +1,10 @@
 // --- 1. CONFIGURATION ---
-// Apni Restricted Nayi Key yahan dalo
 const GEMINI_KEY = "AIzaSyBSROwkYwyG0Dzz8-WKSzjak60XYz-fRNA"; 
 
-// IMPORTANT: v1beta use karna zaroori hai gemini-1.5-flash ke liye
+// Is URL ko dhyan se dekho: v1beta aur model ke baad :generateContent zaroori hai
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`;
 
-// --- 2. THEME TOGGLE ---
+// --- 2. THEME TOGGLE (Full Fix) ---
 const themeBtn = document.getElementById('theme-toggle');
 if (themeBtn) {
     themeBtn.onclick = () => {
@@ -35,7 +34,7 @@ async function sendMessage() {
     const userText = input.value.trim();
     if (!userText) return;
 
-    // User Message Display
+    // User Message
     body.innerHTML += `<div class="user-msg">${userText}</div>`;
     input.value = "";
     body.scrollTop = body.scrollHeight;
@@ -53,15 +52,15 @@ async function sendMessage() {
 
         const data = await response.json();
 
-        // Agar 404 ya Model Not Found aaye
+        // Agar 404 ya Model Not Found aaye, toh console mein error dekho
         if (!response.ok) {
-            console.error("API Error Detail:", data);
-            throw new Error(data.error ? data.error.message : "Model not found or API error");
+            console.error("DEBUG INFO:", data);
+            throw new Error(data.error ? data.error.message : "API Error");
         }
 
         if (data.candidates && data.candidates[0].content) {
             const aiRaw = data.candidates[0].content.parts[0].text;
-            // Markdown logic
+            // Marked.js check
             const aiFormatted = (typeof marked !== 'undefined') ? marked.parse(aiRaw) : aiRaw;
             body.innerHTML += `<div class="ai-msg">${aiFormatted}</div>`;
             status.innerText = "Online";
@@ -73,5 +72,12 @@ async function sendMessage() {
         body.innerHTML += `<div class="ai-msg" style="color:red">Error: ${error.message}</div>`;
     } finally {
         body.scrollTop = body.scrollHeight;
+    }
+}
+
+// Enter support
+function handleKey(event) {
+    if (event.key === "Enter") {
+        sendMessage();
     }
 }
