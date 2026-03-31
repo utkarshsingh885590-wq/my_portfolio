@@ -3,79 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Utkarsh Singh | ML Engineer</title>
+    <title>Utkarsh Singh | Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 </head>
 <body data-theme="light">
 
     <nav class="navbar">
-        <div class="nav-content">
-            <div class="logo">UTKARSH<span>/AI</span></div>
-            <div class="nav-links">
-                <a href="#projects">Projects</a>
-                <a href="#about">About</a>
+        <div class="nav-container">
+            <div class="logo">UTKARSH<span>SINGH</span></div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-btns">
                 <button id="theme-toggle"><ion-icon name="contrast-outline"></ion-icon></button>
             </div>
         </div>
     </nav>
 
-    <header class="hero container">
-        <div class="hero-left">
-            <p class="mono">B.P. Mandal College of Engineering '27</p>
-            <h1>Building <span>Predictive Systems</span> for the next generation.</h1>
-            <p class="desc">B.E. Student specializing in Machine Learning. Currently developing high-accuracy models for industry-specific data analysis.</p>
-            <div class="hero-actions">
-                <a href="#contact" class="btn-black">Get in touch</a>
-                <a href="#projects" class="btn-text">View projects →</a>
+    <header id="home" class="hero container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="mono">B.P. Mandal College of Engineering '27</p>
+                <h1>Creative <span>AI/ML</span> Engineer.</h1>
+                <p>Passionate about data patterns and predictive modeling. Building the future of automation, one line of code at a time.</p>
+                <div class="cta-group">
+                    <a href="#contact" class="btn-primary">Hire Me</a>
+                    <a href="#projects" class="btn-secondary">View Work</a>
+                </div>
             </div>
-        </div>
-        <div class="hero-right">
-            <img src="utkarsh image.jpeg" alt="Utkarsh Singh" class="hero-img">
+            <div class="hero-img-box">
+                <img src="utkarsh.jpeg" alt="Utkarsh Singh">
+            </div>
         </div>
     </header>
 
-    <section id="projects" class="container">
-        <h2 class="label">Selected Project</h2>
-        <div class="project-card">
-            <div class="project-header">
-                <h3>Restaurant Success Prediction</h3>
-                <span class="mono">ML / REGRESSION</span>
-            </div>
-            <p>An end-to-end Machine Learning pipeline that predicts restaurant profitability using historical location and cuisine data. Achieved a significant 89% R² score during testing.</p>
-            <div class="project-stats">
-                <div class="stat">
-                    <span>Algorithm</span>
-                    <p>Random Forest Regressor</p>
-                </div>
-                <div class="stat">
-                    <span>Libraries</span>
-                    <p>Scikit-Learn, Pandas, Matplotlib</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="about" class="container">
-        <div class="about-grid">
-            <div class="about-item">
-                <h2 class="label">Skills</h2>
-                <p>Python, Data Cleaning, Supervised Learning, Feature Engineering, Model Deployment.</p>
+        <h2 class="section-title">About Me</h2>
+        <div class="about-card">
+            <p>I am a 2nd-year Engineering student focused on Machine Learning. I believe in making data useful for businesses through advanced analytics and robust model architecture.</p>
+        </div>
+    </section>
+
+    <section id="skills" class="container">
+        <h2 class="section-title">Technical Stack</h2>
+        <div class="skills-grid">
+            <div class="skill-item">Python</div>
+            <div class="skill-item">Scikit-Learn</div>
+            <div class="skill-item">Pandas / NumPy</div>
+            <div class="skill-item">Data Cleaning</div>
+            <div class="skill-item">Model Testing</div>
+            <div class="skill-item">HTML/CSS/JS</div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="project-card">
+            <div class="p-header">
+                <h3>Restaurant Success Prediction</h3>
+                <span class="p-tag">Machine Learning</span>
             </div>
-            <div class="about-item">
-                <h2 class="label">Contact</h2>
-                <p>utkarshsingh885590.wq@gmail.com</p>
-                <form action="https://formspree.io/f/mqkvpown" method="POST" class="minimal-form">
-                    <input type="email" name="email" placeholder="Email Address" required>
-                    <button type="submit">Submit</button>
-                </form>
+            <p>Developed an end-to-end regression model to predict restaurant pricing and success with 89% accuracy.</p>
+            <div class="p-footer">
+                <span class="mono">Algo: Random Forest</span>
             </div>
         </div>
     </section>
 
-    <footer class="container">
-        <p>© 2026 Utkarsh Singh. Built with precision.</p>
+    <section id="contact" class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-wrapper">
+            <form action="https://formspree.io/f/mqkvpown" method="POST" class="contact-form">
+                <div class="input-row">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <textarea name="message" rows="5" placeholder="Project details or message..." required></textarea>
+                <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Utkarsh Singh | All Rights Resrved </p>
     </footer>
 
     <script src="script.js"></script>
