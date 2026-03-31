@@ -1,22 +1,26 @@
-// --- 1. CONFIGURATION ---
+// --- SABSE UPAR: Key aur URL define karo ---
 const GEMINI_KEY = "AIzaSyBSROwkYwyG0Dzz8-WKSzjak60XYz-fRNA"; 
 
-// Humne yahan 'gemini-1.5-flash-latest' use kiya hai jo v1beta par 100% chalta hai
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${AIzaSyBSROwkYwyG0Dzz8-WKSzjak60XYz-fRNA}`;
+// Is line ko check karo, ye sendMessage() function ke bahar honi chahiye
+const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`;
 
-// --- 2. THEME TOGGLE ---
-const themeBtn = document.getElementById('theme-toggle');
-if (themeBtn) {
-    themeBtn.onclick = () => {
-        document.body.classList.toggle('dark-theme');
-        const icon = themeBtn.querySelector('i');
-        if (icon) {
-            icon.classList.toggle('fa-sun');
-            icon.classList.toggle('fa-moon');
-        }
-    };
+// --- USKE BAAD: Functions likho ---
+async function sendMessage() {
+    const input = document.getElementById('userInput');
+    const body = document.getElementById('chatBody');
+    // Ab jab ye function chalega, API_URL pehle se "Defined" hoga
+    // ... baki ka code ...
+    
+    try {
+        const response = await fetch(API_URL, { 
+            method: "POST",
+            // ... headers and body ...
+        });
+        // ... rest of the logic ...
+    } catch (error) {
+        console.error(error);
+    }
 }
-
 // --- 3. CHAT WINDOW TOGGLE ---
 function toggleChat() {
     const chat = document.getElementById('aiChat');
