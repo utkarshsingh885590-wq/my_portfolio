@@ -1,82 +1,50 @@
-// Typing effect
-const textArray = ["Machine Learning", "Data Preprocessing", "Python"];
-const typingTextElement = document.querySelector('.typing-text');
-let textIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-
-function typeEffect() {
-    const currentText = textArray[textIndex];
-    if (isDeleting) {
-        typingTextElement.textContent = currentText.substring(0, charIndex - 1);
-        charIndex--;
-    } else {
-        typingTextElement.textContent = currentText.substring(0, charIndex + 1);
-        charIndex++;
-    }
-
-    let typeSpeed = 100;
-    if (isDeleting) typeSpeed /= 2;
-
-    if (!isDeleting && charIndex === currentText.length) {
-        isDeleting = true;
-        typeSpeed = 2000; // Pause at the end
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        textIndex = (textIndex + 1) % textArray.length;
-        typeSpeed = 500; // Small pause before new word
-    }
-
-    setTimeout(typeEffect, typeSpeed);
-}
-
-// Fade-in animation on scroll using Intersection Observer
-const observerOptions = { root: null, threshold: 0.2 };
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-        }
-    });
-}, observerOptions);
-
-// Theme Toggle logic
+// --- Theme Handling Logic ---
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
+// Check localStorage for preferred theme
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme) {
+    body.setAttribute('data-theme', currentTheme);
+}
+
 themeToggle.addEventListener('click', () => {
-    if(body.style.getPropertyValue('--bg') === '#ffffff'){
-        body.style.removeProperty('--bg');
-        themeToggle.innerHTML = '<ion-icon name="moon-outline"></ion-icon>';
+    // Basic appearance change - toggling data-theme attribute
+    if (body.getAttribute('data-theme') === 'dark') {
+        body.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
     } else {
-        body.style.setProperty('--bg', '#ffffff');
-        themeToggle.innerHTML = '<ion-icon name="sunny-outline"></ion-icon>';
+        body.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
     }
 });
 
-// Contact Form submission (Success notification)
-const form = document.getElementById('contact-form');
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const data = new FormData(form);
-    fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-    }).then(response => {
-        if (response.ok) {
-            alert('Your message was sent successfully! Utkarsh will get back to you soon.');
-            form.reset();
-        } else {
-            alert('Oops! There was a problem sending your message.');
-        }
-    });
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-    typeEffect();
-    document.querySelectorAll('section, .project-card, .skill-tag').forEach(el => {
-        el.classList.add('hidden'); // Initially hide
-        observer.observe(el);
-    });
+// --- Task 6: Form Validation Logic ---
+(() => {
+    'use strict'
+  
+    // Fetch the form we want to apply custom validation styles to
+    const form = document.getElementById('contact-form')
+  
+    // Add event listener to handle form submission
+    form.addEventListener('submit', event => {
+        // Perform standard client-side validation check
+        if (!form.checkValidity()) {
+            event.preventDefault() // Stop submission if invalid
+            event.stopPropagation()
+        }
+        
+        // Let Bootstrap add styles (red borders etc.)
+        form.classList.add('was-validated')
+        
+        // Success logic handler
+        if (form.checkValidity()) {
+            alert('Signal Sent! Utkarsh will analyze your request soon.');
+            form.reset();
+            form.classList.remove('was-validated');
+        }
+
+    }, false)
+})()
 });
