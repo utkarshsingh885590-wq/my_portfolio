@@ -54,28 +54,4 @@ async function sendMessage() {
     }
 }
 
-        // Agar URL galat hoga toh yahan 404 pakda jayega
-        if (!response.ok) {
-            const err = await response.json();
-            console.error("Server Error:", err);
-            throw new Error(`API Error ${response.status}: ${err.error.message}`);
-        }
-
-        const data = await response.json();
-        
-        if (data.candidates && data.candidates[0].content.parts[0].text) {
-            const aiRaw = data.candidates[0].content.parts[0].text;
-            const aiFormatted = typeof marked !== 'undefined' ? marked.parse(aiRaw) : aiRaw;
-
-            body.innerHTML += `<div class="ai-msg">${aiFormatted}</div>`;
-            status.innerText = "Online";
-        }
-
-    } catch (error) {
-        console.error("AI Logic Error:", error);
-        status.innerText = "Offline";
-        body.innerHTML += `<div class="ai-msg" style="color:red">Error: ${error.message}. Please check URL or API Key.</div>`;
-    } finally {
-        body.scrollTop = body.scrollHeight;
-    }
-}
+      
