@@ -195,27 +195,27 @@
             </div>
         </div>
     </section>
-    <div class="ai-chat-container" id="aiChat">
+   <div class="ai-chat-container" id="aiChat">
     <div class="chat-header">
-        <div class="ai-logo"><i class="fas fa-robot"></i></div>
+        <div class="ai-logo-inner"><i class="fas fa-robot"></i></div>
         <div class="ai-status">
-            <span>US-AI Assistant</span>
-            <small>Online & Learning</small>
+            <span>Utkarsh's Brain (GPT-4)</span>
+            <div class="typing-indicator" id="aiTyping" style="display:none;">Thinking...</div>
         </div>
         <button onclick="toggleChat()" class="close-chat">&times;</button>
     </div>
     <div class="chat-body" id="chatBody">
-        <div class="ai-msg">Hi! I'm Utkarsh's AI assistant. Ask me about his ML projects!</div>
+        <div class="ai-msg">Hi! I'm Utkarsh's personal AI. I can explain his ML models or just chat about tech. Try me!</div>
     </div>
     <div class="chat-footer">
-        <input type="text" id="userInput" placeholder="Ask about Restaurant Model...">
+        <input type="text" id="userInput" placeholder="Ask anything..." onkeypress="handleKey(event)">
         <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
     </div>
 </div>
 
 <div class="ai-trigger" onclick="toggleChat()" id="aiBtn">
     <i class="fas fa-brain"></i>
-    <span class="pulse"></span>
+    <div class="pulse"></div>
 </div>
 
     <footer class="footer">
