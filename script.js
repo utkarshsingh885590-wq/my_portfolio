@@ -10,26 +10,49 @@ async function sendMessage() {
     const userText = input.value.trim();
     if (!userText) return;
 
+    // User ka message screen par dikhao
     body.innerHTML += `<div class="user-msg">${userText}</div>`;
     input.value = "";
     body.scrollTop = body.scrollHeight;
 
-    status.innerText = "Connecting...";
+    status.innerText = "Thinking...";
 
     try {
         const response = await fetch(API_URL, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                contents: [{
-                    parts: [{
-                        text: userText
-                    }]
-                }]
+                contents: [{ parts: [{ text: userText }] }]
             })
         });
+
+        const data = await response.json();
+
+        // Agar Google error bhej raha hai (404, 400, etc.)
+        if (!response.ok) {
+            console.error("Google API Error:", data);
+            throw new Error(data.error ? data.error.message : "Invalid API Request");
+        }
+
+        // Check if response has content
+        if (data.candidates && data.candidates[0].content) {
+            const aiRaw = data.candidates[0].content.parts[0].text;
+            // Marked.js use karke format karo
+            const aiFormatted = typeof marked !== 'undefined' ? marked.parse(aiRaw) : aiRaw;
+            body.innerHTML += `<div class="ai-msg">${aiFormatted}</div>`;
+            status.innerText = "Online";
+        } else {
+            throw new Error("API responded but no content found.");
+        }
+
+    } catch (error) {
+        console.error("Full Debug Error:", error);
+        status.innerText = "Offline";
+        body.innerHTML += `<div class="ai-msg" style="color: red;">Error: ${error.message}</div>`;
+    } finally {
+        body.scrollTop = body.scrollHeight;
+    }
+}
 
         // Agar URL galat hoga toh yahan 404 pakda jayega
         if (!response.ok) {
