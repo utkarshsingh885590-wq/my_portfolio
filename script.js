@@ -42,21 +42,57 @@ function sendMessage() {
     const userText = input.value.toLowerCase();
     input.value = "";
 
-    // AI Logic (Simple NLP)
-    setTimeout(() => {
-        let response = "I'm still learning! But I know Utkarsh is a great AI Engineer.";
-        
-        if (userText.includes("project") || userText.includes("restaurant")) {
-            response = "Utkarsh built a Restaurant Prediction model with 89% accuracy using Random Forest!";
-        } else if (userText.includes("skill") || userText.includes("tech")) {
-            response = "He is an expert in Python, Scikit-Learn, and Data Science.";
-        } else if (userText.includes("college")) {
-            response = "He studies at B.P. Mandal College of Engineering, Madhepura.";
-        } else if (userText.includes("hi") || userText.includes("hello")) {
-            response = "Hello! How can I help you explore Utkarsh's work today?";
-        }
+   const GEMINI_KEY = "AIzaSyB8ldutUVbE8e4xiZ4bp5DwkNMHAsEvsos";
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`;
 
-        body.innerHTML += `<div class="ai-msg">${response}</div>`;
+function toggleChat() {
+    const chat = document.getElementById('aiChat');
+    chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
+}
+
+function handleKey(e) {
+    if (e.key === 'Enter') sendMessage();
+}
+
+async function sendMessage() {
+    const input = document.getElementById('userInput');
+    const body = document.getElementById('chatBody');
+    const status = document.getElementById('aiStatus');
+    
+    if (!input.value.trim()) return;
+
+    const userText = input.value;
+    body.innerHTML += `<div class="user-msg">${userText}</div>`;
+    input.value = "";
+    body.scrollTop = body.scrollHeight;
+
+    status.innerText = "Thinking...";
+    status.style.color = "#fbbf24";
+
+    try {
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                contents: [{
+                    parts: [{
+                        text: `Context: You are the personal AI of Utkarsh Singh. He is a 2nd-year AI/ML student at BP Mandal College, Madhepura. He created a Restaurant Success Prediction model with 89% accuracy using Python. He knows Machine Learning, Pandas, and Scikit-learn. Be helpful, very brief, and talk like a pro engineer. User asked: ${userText}`
+                    }]
+                }]
+            })
+        });
+
+        const data = await response.json();
+        const aiText = data.candidates[0].content.parts[0].text;
+
+        status.innerText = "Online";
+        status.style.color = "#4ade80";
+        body.innerHTML += `<div class="ai-msg">${aiText}</div>`;
         body.scrollTop = body.scrollHeight;
-    }, 1000);
+
+    } catch (error) {
+        status.innerText = "Error";
+        body.innerHTML += `<div class="ai-msg">System overload! Please try again later.</div>`;
+        console.error(error);
+    }
 }
