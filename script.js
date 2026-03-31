@@ -2,7 +2,7 @@
 const GEMINI_KEY = "AIzaSyBSROwkYwyG0Dzz8-WKSzjak60XYz-fRNA"; 
 
 // Humne yahan 'gemini-1.5-flash-latest' use kiya hai jo v1beta par 100% chalta hai
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_KEY}`;
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${AIzaSyBSROwkYwyG0Dzz8-WKSzjak60XYz-fRNA}`;
 
 // --- 2. THEME TOGGLE ---
 const themeBtn = document.getElementById('theme-toggle');
