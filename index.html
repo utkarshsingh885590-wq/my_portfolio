@@ -3,95 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Utkarsh Singh | Portfolio</title>
+    <title>Utkarsh Singh - AI/ML Engineer | Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body data-theme="light">
-
+<body>
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">UTKARSH<span>SINGH</span></div>
+            <div class="nav-logo">
+                <a href="#home">US</a>
+            </div>
             <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="nav-btns">
-                <button id="theme-toggle"><ion-icon name="contrast-outline"></ion-icon></button>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </div>
     </nav>
 
-    <header id="home" class="hero container">
-        <div class="hero-content">
-            <div class="hero-text">
-                <p class="mono">B.P. Mandal College of Engineering '27</p>
-                <h1>Creative <span>AI/ML</span> Engineer.</h1>
-                <p>Passionate about data patterns and predictive modeling. Building the future of automation, one line of code at a time.</p>
-                <div class="cta-group">
-                    <a href="#contact" class="btn-primary">Hire Me</a>
-                    <a href="#projects" class="btn-secondary">View Work</a>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">AI/ML Engineering Student</div>
+                <h1 class="hero-title">
+                    Hi, I'm <span class="gradient-text">Utkarsh Singh</span>
+                </h1>
+                <p class="hero-subtitle">
+                    2nd Year B.Tech AI/ML Student at BP Mandal College of Engineering, Madhepura<br>
+                    Passionate about Machine Learning, Data Science & AI Research
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> View Projects
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Get In Touch
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <span><strong>1+</strong> ML Projects</span>
+                    <span><strong>2nd</strong> Year Student</span>
+                    <span><strong>Python</strong> Expert</span>
                 </div>
             </div>
-            <div class="hero-img-box">
-                <img src="utkarsh.jpeg" alt="Utkarsh Singh">
-            </div>
-        </div>
-    </header>
-
-    <section id="about" class="container">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-card">
-            <p>I am a 2nd-year Engineering student focused on Machine Learning. I believe in making data useful for businesses through advanced analytics and robust model architecture.</p>
-        </div>
-    </section>
-
-    <section id="skills" class="container">
-        <h2 class="section-title">Technical Stack</h2>
-        <div class="skills-grid">
-            <div class="skill-item">Python</div>
-            <div class="skill-item">Scikit-Learn</div>
-            <div class="skill-item">Pandas / NumPy</div>
-            <div class="skill-item">Data Cleaning</div>
-            <div class="skill-item">Model Testing</div>
-            <div class="skill-item">HTML/CSS/JS</div>
-        </div>
-    </section>
-
-    <section id="projects" class="container">
-        <h2 class="section-title">Projects</h2>
-        <div class="project-card">
-            <div class="p-header">
-                <h3>Restaurant Success Prediction</h3>
-                <span class="p-tag">Machine Learning</span>
-            </div>
-            <p>Developed an end-to-end regression model to predict restaurant pricing and success with 89% accuracy.</p>
-            <div class="p-footer">
-                <span class="mono">Algo: Random Forest</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="container">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="contact-wrapper">
-            <form action="https://formspree.io/f/mqkvpown" method="POST" class="contact-form">
-                <div class="input-row">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
+            <div class="hero-image">
+                <div class="profile-card">
+                    <img src="utkarsh image.jpeg" height="540" width="310" alt="Utkarsh Singh">
+                    <div class="profile-overlay">
+                        <div class="profile-status">
+                            <div class="status-indicator"></div>
+                            <span>Available</span>
+                        </div>
+                    </div>
                 </div>
-                <textarea name="message" rows="5" placeholder="Project details or message..." required></textarea>
-                <button type="submit" class="btn-submit">Send Message</button>
-            </form>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <p>© 2026 Utkarsh Singh | All Rights Resrved </p>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Get to know me</span>
+                <h2 class="section-title">About Me</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-bio">
+                    <p>
+                      <background color="light green">  I'm a dedicated <strong>2nd Year B.Tech AI/ML Engineering student</strong> at 
+                        <strong>BP Mandal College of Engineering, Madhepura</strong>. Passionate about 
+                        solving real-world problems using Machine Learning and Data Science.
+                    </p>
+                    <p>
+                        I have hands-on experience with ML model training, testing, and deployment. 
+                        Successfully built a <strong>Restaurant Prediction ML Model</strong> using real-world datasets.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <h4>BP Mandal College of Engineering</h4>
+                                <span>B.Tech AI/ML - 2nd Year</span>
+                            </div>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-project-diagram"></i>
+                            <div>
+                                <h4>ML Projects</h4>
+                                <span>Model Training & Testing</span>
+                            </div>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Madhepura, Bihar</h4>
+                                <span>India</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-skills-preview">
+                    <h3>Core Skills</h3>
+                    <div class="skills-preview">
+                        <span class="skill-chip primary">Python</span>
+                        <span class="skill-chip">Machine Learning</span>
+                        <span class="skill-chip">Pandas</span>
+                        <span class="skill-chip">Scikit-learn</span>
+                        <span class="skill-chip">NumPy</span>
+                        <span class="skill-chip">Data Analysis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">What I bring to the table</span>
+                <h2 class="section-title">Technical Skills</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-brain"></i> Machine Learning</h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar">
+                            <span>Model Training & Testing</span>
+                            <div class="progress" data-width="90%"></div>
+                        </div>
+                        <div class="skill-bar">
+                            <span>Scikit-learn</span>
+                            <div class="progress" data-width="85%"></div>
+                        </div>
+                        <div class="skill-bar">
+                            <span>Data Preprocessing</span>
+                            <div class="progress" data-width="88%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming</h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar">
+                            <span>Python</span>
+                            <div class="progress" data-width="95%"></div>
+                        </div>
+                        <div class="skill-bar">
+                            <span>NumPy</span>
+                            <div class="progress" data-width="90%"></div>
+                        </div>
+                        <div class="skill-bar">
+                            <span>Pandas</span>
+                            <div class="progress" data-width="92%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-line"></i> Data Science</h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar">
+                            <span>Data Analysis</span>
+                            <div class="progress" data-width="87%"></div>
+                        </div>
+                        <div class="skill-bar">
+                            <span>Data Visualization</span>
+                            <div class="progress" data-width="80%"></div>
+                        </div>
+                        <div class="skill-bar">
+                            <span>Matplotlib/Seaborn</span>
+                            <div class="progress" data-width="82%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">My work</span>
+                <h2 class="section-title">Featured Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card featured">
+                    <div class="project-header">
+                        <div class="project-badge">Featured</div>
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1555939594-58056f625634?w=600&h=400&fit=crop" alt="Restaurant Prediction">
+                    </div>
+                    <div class="project-content">
+                        <h3>Restaurant Prediction ML Model</h3>
+                        <p>Built a complete ML pipeline for restaurant prediction using real-world datasets. Trained and tested multiple algorithms for accurate predictions.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Scikit-learn</span>
+                            <span>Pandas</span>
+                            <span>NumPy</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-sm primary"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="btn btn-sm secondary"><i class="fas fa-eye"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?w=600&h=400&fit=crop" alt="Data Analysis">
+                    </div>
+                    <div class="project-content">
+                        <h3>Data Analysis Dashboard</h3>
+                        <p>Interactive data analysis dashboard with advanced visualizations and insights using Python libraries.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Matplotlib</span>
+                            <span>Pandas</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-sm primary"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Let's connect</span>
+                <h2 class="section-title">Contact Me</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>utkarshsingh@email.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+91 XXXXXXXXXX</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Madhepura, Bihar</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <div>
+                            <h3>LinkedIn</h3>
+                            <p>Utkarsh Singh</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Tell me about your project..." rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <h3>Utkarsh Singh</h3>
+                    <p>© 2024 BP Mandal College of Engineering Student. Made with ❤️ for AI/ML</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
