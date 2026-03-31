@@ -1,10 +1,10 @@
 // --- 1. CONFIGURATION ---
 const GEMINI_KEY = "AIzaSyBSROwkYwyG0Dzz8-WKSzjak60XYz-fRNA"; 
 
-// Is URL ko dhyan se dekho: v1beta aur model ke baad :generateContent zaroori hai
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`;
+// Humne yahan 'gemini-1.5-flash-latest' use kiya hai jo v1beta par 100% chalta hai
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_KEY}`;
 
-// --- 2. THEME TOGGLE (Full Fix) ---
+// --- 2. THEME TOGGLE ---
 const themeBtn = document.getElementById('theme-toggle');
 if (themeBtn) {
     themeBtn.onclick = () => {
@@ -34,12 +34,11 @@ async function sendMessage() {
     const userText = input.value.trim();
     if (!userText) return;
 
-    // User Message
     body.innerHTML += `<div class="user-msg">${userText}</div>`;
     input.value = "";
     body.scrollTop = body.scrollHeight;
 
-    status.innerText = "Thinking...";
+    status.innerText = "Connecting...";
 
     try {
         const response = await fetch(API_URL, {
@@ -52,15 +51,14 @@ async function sendMessage() {
 
         const data = await response.json();
 
-        // Agar 404 ya Model Not Found aaye, toh console mein error dekho
+        // Agar phir bhi error aaye, toh error message check karein
         if (!response.ok) {
-            console.error("DEBUG INFO:", data);
-            throw new Error(data.error ? data.error.message : "API Error");
+            console.error("DEBUG DATA:", data);
+            throw new Error(data.error ? data.error.message : "Model name issue");
         }
 
         if (data.candidates && data.candidates[0].content) {
             const aiRaw = data.candidates[0].content.parts[0].text;
-            // Marked.js check
             const aiFormatted = (typeof marked !== 'undefined') ? marked.parse(aiRaw) : aiRaw;
             body.innerHTML += `<div class="ai-msg">${aiFormatted}</div>`;
             status.innerText = "Online";
@@ -69,15 +67,17 @@ async function sendMessage() {
     } catch (error) {
         console.error("AI Error:", error);
         status.innerText = "Offline";
+        // User ko friendly error dikhao
         body.innerHTML += `<div class="ai-msg" style="color:red">Error: ${error.message}</div>`;
     } finally {
         body.scrollTop = body.scrollHeight;
     }
 }
 
-// Enter support
-function handleKey(event) {
-    if (event.key === "Enter") {
-        sendMessage();
-    }
+// Handle Enter Key
+const inputField = document.getElementById('userInput');
+if (inputField) {
+    inputField.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") sendMessage();
+    });
 }
