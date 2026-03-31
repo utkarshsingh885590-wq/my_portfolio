@@ -195,6 +195,28 @@
             </div>
         </div>
     </section>
+    <div class="ai-chat-container" id="aiChat">
+    <div class="chat-header">
+        <div class="ai-logo"><i class="fas fa-robot"></i></div>
+        <div class="ai-status">
+            <span>US-AI Assistant</span>
+            <small>Online & Learning</small>
+        </div>
+        <button onclick="toggleChat()" class="close-chat">&times;</button>
+    </div>
+    <div class="chat-body" id="chatBody">
+        <div class="ai-msg">Hi! I'm Utkarsh's AI assistant. Ask me about his ML projects!</div>
+    </div>
+    <div class="chat-footer">
+        <input type="text" id="userInput" placeholder="Ask about Restaurant Model...">
+        <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<div class="ai-trigger" onclick="toggleChat()" id="aiBtn">
+    <i class="fas fa-brain"></i>
+    <span class="pulse"></span>
+</div>
 
     <footer class="footer">
         <div class="container">
