@@ -1,6 +1,8 @@
+// 1. Gemini AI Configuration
 const GEMINI_KEY = "AIzaSyB8ldutUVbE8e4xiZ4bp5DwkNMHAsEvsos";
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`;
 
+// 2. Toggle Chat Window
 function toggleChat() {
     const chat = document.getElementById('aiChat');
     if (chat.style.display === 'flex') {
@@ -10,6 +12,7 @@ function toggleChat() {
     }
 }
 
+// 3. Send Message to AI
 async function sendMessage() {
     const input = document.getElementById('userInput');
     const body = document.getElementById('chatBody');
@@ -18,7 +21,7 @@ async function sendMessage() {
     const userText = input.value.trim();
     if (!userText) return;
 
-    // User message display
+    // Display User Message
     body.innerHTML += `<div class="user-msg">${userText}</div>`;
     input.value = "";
     body.scrollTop = body.scrollHeight;
@@ -32,10 +35,10 @@ async function sendMessage() {
             body: JSON.stringify({
                 contents: [{
                     parts: [{
-                        text: `You are a helpful AI assistant for Utkarsh Singh's portfolio. 
-                        Utkarsh is a 2nd year B.Tech AI/ML student at BP Mandal College. 
-                        He built a Restaurant Prediction model. Respond professionally.
-                        User Question: ${userText}`
+                        text: `You are Utkarsh's AI assistant. 
+                        Context: Utkarsh is a 2nd year B.Tech AI/ML student at BP Mandal College. 
+                        He built a Restaurant Success Prediction model (89% accuracy). 
+                        Explain clearly and use code blocks if needed. Question: ${userText}`
                     }]
                 }]
             })
@@ -46,28 +49,48 @@ async function sendMessage() {
         if (data.candidates && data.candidates[0].content.parts[0].text) {
             const aiRaw = data.candidates[0].content.parts[0].text;
             
-            // Markdown to HTML conversion using marked.js
-            const aiFormatted = marked.parse(aiRaw);
+            // Format with Marked.js (Markdown to HTML)
+            const aiFormatted = typeof marked !== 'undefined' ? marked.parse(aiRaw) : aiRaw;
 
             body.innerHTML += `<div class="ai-msg">${aiFormatted}</div>`;
         } else {
-            throw new Error("Invalid API Key or Limit reached.");
+            throw new Error("Invalid Response");
         }
 
     } catch (error) {
         console.error("AI Error:", error);
-        body.innerHTML += `<div class="ai-msg">Sorry, I'm having trouble connecting right now.</div>`;
+        body.innerHTML += `<div class="ai-msg">Sorry, I'm facing some connectivity issues.</div>`;
     } finally {
         status.innerText = "Online";
         body.scrollTop = body.scrollHeight;
     }
 }
 
-// Baki theme toggle logic
+// 4. Skills Toggle Logic (Expand/Collapse)
+function toggleSkill(id) {
+    const detail = document.getElementById(id);
+    if (detail) {
+        detail.classList.toggle('active');
+    }
+}
+
+// 5. Theme Toggle (Light/Dark Mode)
 const themeBtn = document.getElementById('theme-toggle');
-themeBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme');
-    const icon = themeBtn.querySelector('i');
-    icon.classList.toggle('fa-sun');
-    icon.classList.toggle('fa-moon');
+if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        const icon = themeBtn.querySelector('i');
+        if (document.body.classList.contains('dark-theme')) {
+            icon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            icon.classList.replace('fa-sun', 'fa-moon');
+        }
+    });
+}
+
+// 6. Close chat on 'Escape' key
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        document.getElementById('aiChat').style.display = 'none';
+    }
 });
