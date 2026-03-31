@@ -1,50 +1,46 @@
-// --- Theme Handling Logic ---
+// Preloader
+window.addEventListener('load', () => {
+    document.getElementById('preloader').style.display = 'none';
+});
+
+// Typing Effect
+const textArray = ["Utkarsh Singh", "AI Enthusiast", "ML Engineer"];
+let textIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typeSpeed = 100;
+
+function type() {
+    const currentText = textArray[textIndex];
+    if (isDeleting) {
+        document.querySelector('.typing-text').textContent = currentText.substring(0, charIndex - CharIndex - 1);
+        charIndex--;
+    } else {
+        document.querySelector('.typing-text').textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+    }
+
+    if (!isDeleting && charIndex === currentText.length) {
+        isDeleting = true;
+        setTimeout(type, 2000);
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % textArray.length;
+        setTimeout(type, 500);
+    } else {
+        setTimeout(type, isDeleting ? typeSpeed / 2 : typeSpeed);
+    }
+}
+
+// Theme Toggle
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
-// Check localStorage for preferred theme
-const currentTheme = localStorage.getItem('theme');
-if (currentTheme) {
-    body.setAttribute('data-theme', currentTheme);
-}
-
 themeToggle.addEventListener('click', () => {
-    // Basic appearance change - toggling data-theme attribute
-    if (body.getAttribute('data-theme') === 'dark') {
-        body.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-    } else {
-        body.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-    }
+    const isDark = body.getAttribute('data-theme') === 'dark';
+    body.setAttribute('data-theme', isDark ? 'light' : 'dark');
 });
 
-
-// --- Task 6: Form Validation Logic ---
-(() => {
-    'use strict'
-  
-    // Fetch the form we want to apply custom validation styles to
-    const form = document.getElementById('contact-form')
-  
-    // Add event listener to handle form submission
-    form.addEventListener('submit', event => {
-        // Perform standard client-side validation check
-        if (!form.checkValidity()) {
-            event.preventDefault() // Stop submission if invalid
-            event.stopPropagation()
-        }
-        
-        // Let Bootstrap add styles (red borders etc.)
-        form.classList.add('was-validated')
-        
-        // Success logic handler
-        if (form.checkValidity()) {
-            alert('Signal Sent! Utkarsh will analyze your request soon.');
-            form.reset();
-            form.classList.remove('was-validated');
-        }
-
-    }, false)
-})()
+document.addEventListener('DOMContentLoaded', () => {
+    type();
 });
